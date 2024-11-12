@@ -1,0 +1,17 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: joakim-224/kea
+      MYSQL_DATABASE: useremployee
+      MYSQL_USER: root
+      MYSQL_PASSWORD: joakim-224/kea
+    ports:
+      - "3307:3306"
+      #  ^    ^-- intern port i containeren, den skal være 3306 (den laver vi ikke om på)
+      #   `------ ekstern port, den kan vi sætte, og skal matche application.properties
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
